@@ -1,11 +1,13 @@
 ﻿Public Class Form1
     Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
-        If Check(txtPurchaseOrder.Text) Then
-            If BackgroundWorker1.IsBusy = False Then
-                BackgroundWorker1.RunWorkerAsync()
+        If (MessageBox.Show("Quieres comenzar?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
+            If Check(txtPurchaseOrder.Text) Then
+                If BackgroundWorker1.IsBusy = False Then
+                    BackgroundWorker1.RunWorkerAsync()
+                End If
+            Else
+                MessageBox.Show("Purchase Order Format not valid.")
             End If
-        Else
-            MessageBox.Show("Purchase Order Format not valid.")
         End If
     End Sub
 
