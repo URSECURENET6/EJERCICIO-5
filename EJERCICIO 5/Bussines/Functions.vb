@@ -9,7 +9,7 @@ Module Functions
         If Regex.IsMatch(value, "\d{2}[-]\d{4}", RegexOptions.IgnoreCase) Then
             Return True
         Else
-            If Regex.IsMatch(value, "\d{7}[_]\d{3}", RegexOptions.IgnoreCase) Then
+            If Regex.IsMatch(value, "\d{6}[_]\d{3}", RegexOptions.IgnoreCase) Then
                 Return True
             Else
                 Return False
