@@ -1,11 +1,13 @@
 ﻿Public Class Form1
     Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
-        If Check(txtPurchaseOrder.Text) Then
-            If BackgroundWorker1.IsBusy = False Then
-                BackgroundWorker1.RunWorkerAsync()
+        If (MessageBox.Show("Quieres comenzar?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
+            If Check(txtPurchaseOrder.Text) Then
+                If BackgroundWorker1.IsBusy = False Then
+                    BackgroundWorker1.RunWorkerAsync()
+                End If
+            Else
+                MessageBox.Show("Purchase Order Format not valid.")
             End If
-        Else
-            MessageBox.Show("Purchase Order Format not valid.")
         End If
     End Sub
 
@@ -30,8 +32,8 @@
     Public Sub FilDGV()
         Dim Stiffener As New Stiffener
         Stiffener._PartNumber = CInt(Int((1000 * Rnd()) + 1))
-        Stiffener._Description = "Description x"
-        Stiffener._IsCustom = False
+        Stiffener._Description = "Description " & Stiffener._PartNumber
+        Stiffener._IsCustom = Stiffener._PartNumber.Contains("1")
         DataGridView1.Rows.Add(New String() {Stiffener._PartNumber, Stiffener._Description, Stiffener._IsCustom})
     End Sub
 End Class
