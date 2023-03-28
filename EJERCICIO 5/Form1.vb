@@ -30,8 +30,8 @@
     Public Sub FilDGV()
         Dim Stiffener As New Stiffener
         Stiffener._PartNumber = CInt(Int((1000 * Rnd()) + 1))
-        Stiffener._Description = "Description x"
-        Stiffener._IsCustom = False
+        Stiffener._Description = "Description " & Stiffener._PartNumber
+        Stiffener._IsCustom = Stiffener._PartNumber.Contains("1")
         DataGridView1.Rows.Add(New String() {Stiffener._PartNumber, Stiffener._Description, Stiffener._IsCustom})
     End Sub
 End Class
